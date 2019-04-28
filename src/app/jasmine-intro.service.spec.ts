@@ -14,7 +14,7 @@ describe('JasmineIntroService', () => {
 
     const result = service.addNumber(1, 2);
 
-    expect(3).toEqual(result);
+    expect(result).toEqual(3);
   });
 
   it('should subtract two numbers', () => {
@@ -22,7 +22,23 @@ describe('JasmineIntroService', () => {
 
     const result = service.subtractNumber(1, 2);
 
-    expect(-1).toEqual(result);
+    expect(result).toEqual(-1);
+  });
+
+  it('should multiplication two number', () => {
+    const service: JasmineIntroService = new JasmineIntroService();
+
+    const result = service.multiplicationNumber(4, 2);
+
+    expect(result).toEqual(8);
+  });
+
+  it('should division two number', () => {
+    const service: JasmineIntroService = new JasmineIntroService();
+
+    const result = service.divisionNumber(4, 2);
+
+    expect(result).toEqual(2);
   });
 
   afterEach(() => {
