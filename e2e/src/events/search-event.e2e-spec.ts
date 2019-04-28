@@ -1,6 +1,6 @@
 import { browser, by, element, ElementFinder } from 'protractor';
 // using Peek Definition (Alt+F12) 可以快速找到 fdescribe
-fdescribe('search a event', () => {
+describe('search a event', () => {
   let searchTerm: ElementFinder;
   let searchBtn: ElementFinder;
 
