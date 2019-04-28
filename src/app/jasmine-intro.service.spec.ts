@@ -7,6 +7,7 @@ describe('JasmineIntroService', () => {
 
   beforeEach(() => {
     console.log('beforeEach');
+    const service: JasmineIntroService = new JasmineIntroService();
   });
 
   it('should add two numbers', () => {
