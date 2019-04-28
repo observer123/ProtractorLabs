@@ -5,8 +5,8 @@ fdescribe('search a event', () => {
   let searchBtn: ElementFinder;
 
   beforeAll(async () => {
-    searchTerm = element(by.name('searchTerm'));
-    searchBtn = element(by.buttonText('搜尋'));
+    searchTerm = await element(by.name('searchTerm'));
+    searchBtn = await element(by.buttonText('搜尋'));
   });
 
   it('should navigate to event page', async () => {
