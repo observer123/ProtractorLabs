@@ -8,22 +8,22 @@ describe('App', () => {
     page = new AppPage();
   });
 
-  it('should display title', () => {
-    page.navigateTo();
-    expect(page.getTitleText()).toEqual('Protractor 訓練營');
+  it('should display title', async () => {
+    await page.navigateTo();
+    expect(await page.getTitleText()).toEqual('Protractor 訓練營');
   });
 
-  it('should display title', () => {
-    page.navigateTo();
-    browser.get(browser.baseUrl);
-    const result = element(by.css('div.navbar-header > a')).getText();
+  it('should baseUrl display title Protractor 訓練營', async () => {
+    await page.navigateTo();
+    await browser.get(browser.baseUrl);
+    const result = await element(by.css('div.navbar-header > a')).getText();
     expect(result).toEqual('Protractor 訓練營');
   });
 
-  it('should display title', () => {
-    page.navigateTo();
-    browser.get('http://localhost:4200/events/new');
-    const result = $('body > events-app > ng-component > h1').getText();
+  it('should events/new display title 建立活動', async () => {
+    await page.navigateTo();
+    await browser.get('http://localhost:4200/events/new');
+    const result = await $('body > events-app > ng-component > h1').getText();
     expect(result).toEqual('建立活動');
   });
 

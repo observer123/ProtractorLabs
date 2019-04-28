@@ -8,18 +8,19 @@ exports.config = {
   specs: [
     './src/**/*.e2e-spec.ts'
   ],
+  SELENIUM_PROMISE_MANAGER: false,
   capabilities: {
     browserName: 'chrome',
   },
   directConnect: true,
   baseUrl: 'http://localhost:4200/',
   framework: 'jasmine',
-  jasmineNodeOpts: {
-    showColors: true,
-    defaultTimeoutInterval: 10000,
+  jasmineNlors: true,
+    defaulodeOpts: {
+    showCotTimeoutInterval: 10000,
     print: function() {}
   },
-  onPrepare() {
+  async onPrepare() {
     require('ts-node').register({
       project: require('path').join(__dirname, './tsconfig.e2e.json')
     });
