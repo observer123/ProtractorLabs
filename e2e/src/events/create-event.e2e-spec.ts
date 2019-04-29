@@ -1,7 +1,7 @@
 import { browser, by, element, ElementFinder } from 'protractor';
 import * as path from 'path';
 
-fdescribe('add a new event', () => {
+describe('add a new event', () => {
   let name: ElementFinder;
   let calendarBtn: ElementFinder;
   let time: ElementFinder;
@@ -15,6 +15,8 @@ fdescribe('add a new event', () => {
 
   beforeAll(async () => {
     await browser.get('/events/new');
+    // browser.waitForAngularEnabled(false);
+    // https://blog.miniasp.com/post/2019/03/20/How-to-Add-Type-Checking-for-Protractor-Config-File
   });
 
   beforeEach(() => {
@@ -51,7 +53,7 @@ fdescribe('add a new event', () => {
           .element(by.tagName('tbody'))
           .all(by.tagName('td')).filter(async td => {
             const val = await td.getText();
-            return val === '1997'
+            return val === '1997';
           }).first().click();
 
     await element(by.className('mat-calendar-body'))
@@ -63,7 +65,7 @@ fdescribe('add a new event', () => {
           .element(by.tagName('tbody'))
           .all(by.tagName('td')).filter(async td => {
             const val = await td.getText();
-            return val === '31'
+            return val === '31';
           }).first().click();
 
     expect(await dateInput.getAttribute('value')).toBe('12/31/1997');
@@ -115,10 +117,9 @@ fdescribe('add a new event', () => {
   });
 
   it('should valid created event', async () => {
-    const createdEvent = element.all(by.css('.well.hoverwell.thumbnail')).filter( (elem, index) => {
-      return elem.getText().then((t) => {
-        return t.includes('PROTRACTOR 實戰');
-      });
+    const createdEvent = element.all(by.css('.well.hoverwell.thumbnail')).filter(async (elem) => {
+      const t = await elem.getText();
+      return t.includes('PROTRACTOR 實戰');
     }).first();
     expect(await createdEvent.isPresent()).toBe(true);
   });
