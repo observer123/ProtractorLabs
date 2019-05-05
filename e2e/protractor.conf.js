@@ -9,14 +9,10 @@ exports.config = {
     './src/**/*.e2e-spec.ts'
   ],
   SELENIUM_PROMISE_MANAGER: false,
-  capabilities: {
-    browserName: 'chrome',
-    chromeOptions: {
-      args: [
-        "--headless"
-      ]
-    }
-  },
+  multiCapabilities: [
+    { 'browserName': 'firefox' },
+    {	'browserName': 'chrome' }
+  ],
   directConnect: true,
   baseUrl: 'http://localhost:4200/',
   framework: 'jasmine',
