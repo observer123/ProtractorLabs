@@ -2,6 +2,7 @@
 // https://github.com/angular/protractor/blob/master/lib/config.ts
 
 const { SpecReporter } = require('jasmine-spec-reporter');
+const {HtmlReporter} = require('protractor-beautiful-reporter');
 
 exports.config = {
   allScriptsTimeout: 1100000,
@@ -9,10 +10,9 @@ exports.config = {
     './src/**/*.e2e-spec.ts'
   ],
   SELENIUM_PROMISE_MANAGER: false,
-  multiCapabilities: [
-    { 'browserName': 'firefox' },
-    {	'browserName': 'chrome' }
-  ],
+  capabilities: {
+    browserName: 'chrome',
+  },
   directConnect: true,
   baseUrl: 'http://localhost:4200/',
   framework: 'jasmine',
@@ -26,5 +26,9 @@ exports.config = {
       project: require('path').join(__dirname, './tsconfig.e2e.json')
     });
     jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
+    jasmine.getEnv().addReporter(new HtmlReporter( {
+      baseDirectory: 'tmp/screenshots',
+      takeScreenShotsOnlyForFailedSpecs: false,
+      preserveDirectory: false}).getJasmine2Reporter());
   }
 };
