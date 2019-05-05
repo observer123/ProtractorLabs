@@ -11,6 +11,11 @@ exports.config = {
   SELENIUM_PROMISE_MANAGER: false,
   capabilities: {
     browserName: 'chrome',
+    chromeOptions: {
+      args: [
+        "--headless"
+      ]
+    }
   },
   directConnect: true,
   baseUrl: 'http://localhost:4200/',
